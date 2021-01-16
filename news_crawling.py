@@ -15,7 +15,7 @@ def news():
 
     news_list = []
 
-    for page_number in range(3): # 한 페이지 당 기사 10개
+    for page_number in range(1, 31, 10): # 한 페이지 당 기사 10개
         url_format = "https://search.naver.com/search.naver?&where=news&query={}&sm=tab_pge&sort=0&photo=0&field=0&reporter_article=&pd=0&ds={}&de={}&docid=&nso=so:r,p:from{}to{},a:all&mynews=0&cluster_rank=27&start={}"
         req = requests.get(url_format.format(keyword, now_date, now_date, now_date2, now_date2, str(page_number)),
                            headers={'User-Agent': 'Mozilla/5.0'})
@@ -38,9 +38,8 @@ def news():
 
     return news_list
 
-
-token = "토큰 번호 입력하기"
-url = "url 번호 입력하기"
+token = "token 값"
+url = "notion url 값"
 
 # client 만들고 페이지 정보 가져오기
 client = NotionClient(token_v2=token)
